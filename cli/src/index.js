@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const chalk = require("chalk");
 const { showUpcomingMatches } = require("./commands/upcoming.command");
 const { showAllMatches } = require("./commands/matches.command");
