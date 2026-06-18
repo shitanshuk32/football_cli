@@ -1,5 +1,7 @@
 # 🏆 Footy
 
+[![npm version](https://img.shields.io/npm/v/footy-cli.svg)](https://www.npmjs.com/package/footy-cli)
+
 A FIFA World Cup 2026 companion for the terminal.
 
 Footy lets you check today's matches, live games, upcoming fixtures, and a specific team's schedule without leaving your shell. You run `footy today` or `footy team Portugal` and get clean, color-coded match cards right in the terminal.
