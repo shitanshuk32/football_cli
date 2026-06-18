@@ -22,11 +22,15 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "YOUR_GITHUB_REPO_URL"
+    "url": "git+https://github.com/shitanshuk32/football_cli.git",
+    "directory": "cli"
   },
-  "homepage": "YOUR_GITHUB_REPO_URL",
+  "homepage": "https://github.com/shitanshuk32/football_cli#readme",
   "bugs": {
-    "url": "YOUR_GITHUB_REPO_URL/issues"
+    "url": "https://github.com/shitanshuk32/football_cli/issues"
+  },
+  "engines": {
+    "node": ">=18"
   },
   "type": "commonjs",
   "dependencies": {
