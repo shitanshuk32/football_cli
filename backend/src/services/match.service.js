@@ -1,7 +1,7 @@
 const footballApi = require("../config/footballApi");
 // const AppError = require("../utils/AppError");
 
-// Helper function
+// Helper function to format matches data
 const formatMatches = (matches) => {
   return matches.map((match) => ({
     homeTeam: match.homeTeam.name,
