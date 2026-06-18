@@ -1,17 +1,33 @@
 {
-  "name": "footy",
+  "name": "footy-cli",
   "version": "1.0.0",
-  "description": "",
+  "description": "FIFA World Cup 2026 companion for the terminal.",
   "main": "src/index.js",
   "bin": {
-    "footy": "src/index.js"
+    "footy": "./src/index.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"No tests yet\""
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "football",
+    "fifa",
+    "world-cup",
+    "sports",
+    "cli",
+    "terminal",
+    "soccer"
+  ],
+  "author": "Shitanshu Kumar",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "YOUR_GITHUB_REPO_URL"
+  },
+  "homepage": "YOUR_GITHUB_REPO_URL",
+  "bugs": {
+    "url": "YOUR_GITHUB_REPO_URL/issues"
+  },
   "type": "commonjs",
   "dependencies": {
     "axios": "^1.18.0",
