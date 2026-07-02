@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const errorHandler = require("./middlewares/error.middleware"); // Error middleware
 const matchRoutes = require("./routes/match.routes"); // Routes
+const watchlistRoutes = require("./routes/watchlist.routes"); // Routes
 
 // Initialize Express App
 const app = express();
@@ -10,6 +11,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use("/api/v1/matches", matchRoutes);
+app.use("/api/v1/watchlist", watchlistRoutes);
 
 // Routes
 app.get("/health", (req, res) => {

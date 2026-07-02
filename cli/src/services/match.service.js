@@ -1,25 +1,22 @@
-const axios = require("axios");
-const { API_BASE_URL } = require("../config/api");
-
-const MATCHES_URL = `${API_BASE_URL}/api/v1/matches`;
+const http = require("../config/http");
 
 // Service for getting all matches.
 const getAllMatches = async () => {
-  const response = await axios.get(MATCHES_URL);
+  const response = await http.get("/api/v1/matches"); // GET request to /api/v1/matches
 
   return response.data.matches;
 };
 
 // Service for getting upcoming matches.
 const getUpcomingMatches = async () => {
-  const response = await axios.get(`${MATCHES_URL}/upcoming`);
+  const response = await http.get("/api/v1/matches/upcoming"); // GET request to /api/v1/matches/upcoming
 
   return response.data.matches;
 };
 
 // Service for getting live matches
 const getLiveMatches = async (status) => {
-  const response = await axios.get(`${MATCHES_URL}?status=${status}`);
+  const response = await http.get(`/api/v1/matches?status=${status}`); // GET request to /api/v1/matches?status=${status}
 
   return response.data.matches;
 };
@@ -27,7 +24,7 @@ const getLiveMatches = async (status) => {
 // Service for getting team matches.
 const getTeamMatches = async (team) => {
   const response = await axios.get(
-    `${MATCHES_URL}?team=${encodeURIComponent(team)}`,
+    `/api/v1/matches?team=${encodeURIComponent(team)}`, // GET request to /api/v1/matches?team=${encodeURIComponent(team)}
   );
 
   return response.data.matches;
@@ -35,7 +32,7 @@ const getTeamMatches = async (team) => {
 
 // Service for getting today's matches.
 const getTodayMatches = async () => {
-  const response = await axios.get(`${MATCHES_URL}/today`);
+  const response = await http.get("/api/v1/matches/today"); // GET request to /api/v1/matches/today
 
   return response.data.matches;
 };

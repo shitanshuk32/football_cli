@@ -5,7 +5,7 @@ const {
   getMatches,
   getUpcomingMatches,
   getTodayMatches,
-} = require("../controllers/match.controllers");
+} = require("../controllers/match.controller");
 
 // Initialize Router
 const router = express.Router();

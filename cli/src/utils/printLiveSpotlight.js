@@ -1,5 +1,5 @@
 const chalk = require("chalk");
-const { getFlag } = require("./teamFlags");
+const { teamBadge } = require("./teamBadge");
 const { divider } = require("./theme");
 
 // Hero section shown ONLY when live matches exist, before the cards.
@@ -23,9 +23,7 @@ const printLiveSpotlight = (matches) => {
 
   matches.forEach((match) => {
     console.log(
-      chalk.bold(
-        `${getFlag(match.homeTeam)} ${match.homeTeam} vs ${getFlag(match.awayTeam)} ${match.awayTeam}`,
-      ),
+      `${teamBadge(match.homeTeam)} ${chalk.bold(match.homeTeam)} ${chalk.dim("vs")} ${teamBadge(match.awayTeam)} ${chalk.bold(match.awayTeam)}`,
     );
   });
 

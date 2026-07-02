@@ -8,6 +8,10 @@ const formatMatches = (matches) => {
     awayTeam: match.awayTeam.name,
     status: match.status,
     kickoff: match.utcDate,
+    score: {
+      home: match.score?.fullTime?.home ?? null,
+      away: match.score?.fullTime?.away ?? null,
+    },
   }));
 };
 

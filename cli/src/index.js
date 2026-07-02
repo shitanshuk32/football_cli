@@ -1,13 +1,20 @@
 #!/usr/bin/env node
 
+require("dotenv").config({
+  path: require("path").join(__dirname, "../.env"),
+  quiet: true,
+});
 const chalk = require("chalk");
 const { showUpcomingMatches } = require("./commands/upcoming.command");
 const { showAllMatches } = require("./commands/matches.command");
 const { showTeamMatches } = require("./commands/team.command");
 const { showLiveMatches } = require("./commands/live.command");
 const { showTodayMatches } = require("./commands/today.command");
+const { watchTeam } = require("./commands/watch.command");
+const { showWatchlist } = require("./commands/watchlist.command");
 const { printError, printUnknownCommand } = require("./utils/messages");
 const { printBanner } = require("./utils/banner");
+const { unwatchTeam } = require("./commands/unwatch.command");
 
 const printHelp = () => {
   const cmd = (icon, name, desc) =>
@@ -23,6 +30,8 @@ const printHelp = () => {
   console.log(cmd("⏳", "footy upcoming", "Show upcoming matches"));
   console.log(cmd("📋", "footy matches", "Show all matches"));
   console.log(cmd("🚩", "footy team <team>", "Show matches for a team"));
+  console.log(cmd("⭐", "footy watch <team>", "Add team to watchlist"));
+  console.log(cmd("📖", "footy watchlist", "Show your watchlist"));
   console.log(cmd("❓", "footy help", "Show this help menu"));
   console.log("");
   console.log(chalk.dim("  Tip: start with ") + chalk.green("footy today"));
@@ -38,7 +47,8 @@ const main = async () => {
   }
 
   const command = args[0];
-  const teamName = args[1];
+  const commandArgs = args.slice(1);
+  const teamName = commandArgs.join(" ");
 
   if (command === "help") {
     printHelp();
@@ -72,6 +82,34 @@ const main = async () => {
     }
 
     await showTeamMatches(teamName);
+    return;
+  }
+
+  if (command === "watch") {
+    // If no team name is provided, print an error message and return
+    if (!teamName) {
+      printError("Please provide a team name. Example: footy watch Brazil");
+      return;
+    }
+
+    // Watch the team
+    await watchTeam(teamName);
+    return;
+  }
+
+  if (command === "watchlist") {
+    await showWatchlist();
+    return;
+  }
+
+  if (command === "unwatch") {
+    // If no team name is provided, print an error message and return
+    if (!teamName) {
+      printError("Please provide a team name. Example: footy unwatch Brazil");
+      return;
+    }
+
+    await unwatchTeam(teamName);
     return;
   }
 
