@@ -11,3 +11,7 @@ services:
     envVars:
       - key: FOOTBALL_API_KEY
         sync: false
+      # MongoDB connection string for the watchlist feature. Set the value in
+      # the Render dashboard (Environment tab) — it's a secret, so sync: false.
+      - key: MONGODB_URI
+        sync: false
