@@ -23,7 +23,7 @@ const getLiveMatches = async (status) => {
 
 // Service for getting team matches.
 const getTeamMatches = async (team) => {
-  const response = await axios.get(
+  const response = await http.get(
     `/api/v1/matches?team=${encodeURIComponent(team)}`, // GET request to /api/v1/matches?team=${encodeURIComponent(team)}
   );
 

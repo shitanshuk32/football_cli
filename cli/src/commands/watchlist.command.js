@@ -3,14 +3,22 @@ const chalk = require("chalk");
 const { getDeviceId } = require("../utils/device");
 const { badgeForCode } = require("../utils/teamBadge");
 const { getWatchlist } = require("../services/watchlist.service");
+const { printApiError } = require("../utils/messages");
 
 // Command for showing the watchlist
 const showWatchlist = async () => {
   // Get the device id
   const deviceId = getDeviceId();
 
-  // Get the watchlist
-  const watchlist = await getWatchlist(deviceId);
+  let watchlist;
+
+  try {
+    // Get the watchlist
+    watchlist = await getWatchlist(deviceId);
+  } catch (error) {
+    printApiError(error, `Failed to fetch your watchlist: ${error.message}`);
+    return;
+  }
 
   // If the watchlist is empty, print an error message and return
   if (watchlist.length === 0) {

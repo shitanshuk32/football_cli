@@ -3,6 +3,7 @@ const chalk = require("chalk");
 const { findTeam } = require("../utils/findTeam");
 const { badgeForCode } = require("../utils/teamBadge");
 const { removeTeamFromWatchlist } = require("../services/watchlist.service");
+const { printApiError } = require("../utils/messages");
 
 // Command for unwatching a team
 const unwatchTeam = async (teamName) => {
@@ -21,8 +22,15 @@ const unwatchTeam = async (teamName) => {
   // Get the device id
   const deviceId = getDeviceId();
 
-  // Remove the team from the watchlist
-  const result = await removeTeamFromWatchlist(deviceId, team.code);
+  let result;
+
+  try {
+    // Remove the team from the watchlist
+    result = await removeTeamFromWatchlist(deviceId, team.code);
+  } catch (error) {
+    printApiError(error, `Failed to remove ${team.name} from your watchlist: ${error.message}`);
+    return;
+  }
 
   // If nothing was removed, the team wasn't in the watchlist to begin with
   if (!result.removed) {

@@ -1,6 +1,6 @@
 const { getTeamMatches } = require("../services/match.service");
 const { printMatches } = require("../utils/printMatches");
-const { printEmpty, printError } = require("../utils/messages");
+const { printEmpty, printApiError } = require("../utils/messages");
 
 // Command for showing team matches.
 const showTeamMatches = async (teamName) => {
@@ -13,7 +13,7 @@ const showTeamMatches = async (teamName) => {
       printEmpty(`No matches found for ${teamName}.`);
     }
   } catch (error) {
-    printError(`Failed to fetch ${teamName} matches: ${error.message}`);
+    printApiError(error, `Failed to fetch ${teamName} matches: ${error.message}`);
   }
 };
 

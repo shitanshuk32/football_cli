@@ -18,7 +18,7 @@ const { unwatchTeam } = require("./commands/unwatch.command");
 
 const printHelp = () => {
   const cmd = (icon, name, desc) =>
-    `  ${icon}  ${chalk.cyan(name.padEnd(18))}${chalk.dim(desc)}`;
+    `  ${icon}  ${chalk.cyan(name.padEnd(22))}${chalk.dim(desc)}`;
 
   printBanner();
   console.log("");
@@ -32,6 +32,7 @@ const printHelp = () => {
   console.log(cmd("🚩", "footy team <team>", "Show matches for a team"));
   console.log(cmd("⭐", "footy watch <team>", "Add team to watchlist"));
   console.log(cmd("📖", "footy watchlist", "Show your watchlist"));
+  console.log(cmd("💔", "footy unwatch <team>", "Remove team from watchlist"));
   console.log(cmd("❓", "footy help", "Show this help menu"));
   console.log("");
   console.log(chalk.dim("  Tip: start with ") + chalk.green("footy today"));

@@ -5,6 +5,7 @@ const { getDeviceId } = require("../utils/device");
 const { findTeam } = require("../utils/findTeam");
 
 const { addTeamToWatchlist } = require("../services/watchlist.service");
+const { printApiError } = require("../utils/messages");
 
 // Command for watching a team
 const watchTeam = async (teamName) => {
@@ -22,11 +23,15 @@ const watchTeam = async (teamName) => {
   // Get the device id
   const deviceId = getDeviceId();
 
-  // Add the team to the watchlist
-  const response = await addTeamToWatchlist(deviceId, team.name, team.code);
+  try {
+    // Add the team to the watchlist
+    const response = await addTeamToWatchlist(deviceId, team.name, team.code);
 
-  // Print the response message
-  console.log(chalk.green(`✅ ${response.message}`));
+    // Print the response message
+    console.log(chalk.green(`✅ ${response.message}`));
+  } catch (error) {
+    printApiError(error, `Failed to add ${team.name} to your watchlist: ${error.message}`);
+  }
 };
 
 module.exports = {

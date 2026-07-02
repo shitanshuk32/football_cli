@@ -1,6 +1,6 @@
 const { getUpcomingMatches } = require("../services/match.service");
 const { printMatches } = require("../utils/printMatches");
-const { printEmpty, printError } = require("../utils/messages");
+const { printEmpty, printApiError } = require("../utils/messages");
 
 // Command for showing upcoming matches.
 const showUpcomingMatches = async () => {
@@ -13,7 +13,7 @@ const showUpcomingMatches = async () => {
       printEmpty("No upcoming matches scheduled.");
     }
   } catch (error) {
-    printError(`Failed to fetch upcoming matches: ${error.message}`);
+    printApiError(error, `Failed to fetch upcoming matches: ${error.message}`);
   }
 };
 

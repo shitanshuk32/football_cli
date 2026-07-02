@@ -1,6 +1,6 @@
 const { getTodayMatches } = require("../services/match.service");
 const { printMatches } = require("../utils/printMatches");
-const { printEmpty, printError } = require("../utils/messages");
+const { printEmpty, printApiError } = require("../utils/messages");
 
 // Command for showing today's matches.
 const showTodayMatches = async () => {
@@ -13,7 +13,7 @@ const showTodayMatches = async () => {
       printEmpty("No matches scheduled for today.");
     }
   } catch (error) {
-    printError(`Failed to fetch today's matches: ${error.message}`);
+    printApiError(error, `Failed to fetch today's matches: ${error.message}`);
   }
 };
 

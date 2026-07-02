@@ -1,6 +1,6 @@
 const { getAllMatches } = require("../services/match.service");
 const { printMatches } = require("../utils/printMatches");
-const { printEmpty, printError } = require("../utils/messages");
+const { printEmpty, printApiError } = require("../utils/messages");
 
 // Command for showing all matches.
 const showAllMatches = async () => {
@@ -13,7 +13,7 @@ const showAllMatches = async () => {
       printEmpty("No matches found.");
     }
   } catch (error) {
-    printError(`Failed to fetch all matches: ${error.message}`);
+    printApiError(error, `Failed to fetch all matches: ${error.message}`);
   }
 };
 

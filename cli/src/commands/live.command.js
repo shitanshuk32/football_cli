@@ -1,7 +1,7 @@
 const { getLiveMatches } = require("../services/match.service");
 const { printMatches } = require("../utils/printMatches");
 const { printLiveSpotlight } = require("../utils/printLiveSpotlight");
-const { printEmpty, printError } = require("../utils/messages");
+const { printEmpty, printApiError } = require("../utils/messages");
 const { showUpcomingMatches } = require("./upcoming.command");
 
 // Command for showing live matches.
@@ -17,7 +17,7 @@ const showLiveMatches = async () => {
       await showUpcomingMatches();
     }
   } catch (error) {
-    printError(`Failed to fetch live matches: ${error.message}`);
+    printApiError(error, `Failed to fetch live matches: ${error.message}`);
   }
 };
 

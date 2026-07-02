@@ -18,6 +18,7 @@ I built it because I wanted something quick to glance at during the World Cup, a
 - Live matches with a "LIVE NOW" banner
 - Upcoming (scheduled) fixtures
 - Search by team (`footy team Brazil`)
+- A personal watchlist — `footy watch Brazil`, `footy watchlist`, `footy unwatch Brazil`
 - Match cards that change color based on status (live / upcoming / finished)
 - Country flags and World Cup branding
 - Installable as a global `footy` command
@@ -62,6 +63,9 @@ The other reasons: the API key stays on the server instead of being shipped insi
 | `footy upcoming` | Scheduled matches that haven't started |
 | `footy matches` | All matches |
 | `footy team <name>` | Matches for one team, e.g. `footy team Portugal` |
+| `footy watch <name>` | Add a team to your watchlist, e.g. `footy watch Brazil` |
+| `footy watchlist` | Show the teams you're watching |
+| `footy unwatch <name>` | Remove a team from your watchlist, e.g. `footy unwatch Brazil` |
 
 ## Project Structure
 

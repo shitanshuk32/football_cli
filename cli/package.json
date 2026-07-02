@@ -1,6 +1,6 @@
 {
   "name": "footy-cli",
-  "version": "1.0.0",
+  "version": "0.2.0",
   "description": "FIFA World Cup 2026 companion for the terminal.",
   "main": "src/index.js",
   "bin": {

@@ -18,6 +18,9 @@ footy live               # matches in play right now
 footy upcoming           # scheduled matches that haven't started
 footy matches            # all matches
 footy team Portugal      # matches for one team
+footy watch Brazil       # add a team to your watchlist
+footy watchlist          # show the teams you're watching
+footy unwatch Brazil     # remove a team from your watchlist
 footy help               # show all commands
 ```
 
@@ -31,6 +34,9 @@ footy help               # show all commands
 | `footy upcoming` | Scheduled matches that haven't started |
 | `footy matches` | All matches |
 | `footy team <name>` | Matches for one team, e.g. `footy team Portugal` |
+| `footy watch <name>` | Add a team to your watchlist, e.g. `footy watch Brazil` |
+| `footy watchlist` | Show the teams you're watching |
+| `footy unwatch <name>` | Remove a team from your watchlist, e.g. `footy unwatch Brazil` |
 
 ## Configuration
 
