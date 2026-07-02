@@ -1,7 +1,5 @@
-const chalk = require("chalk");
-
 const { getDeviceId } = require("../utils/device");
-
+const chalk = require("chalk");
 const { findTeam } = require("../utils/findTeam");
 const { badgeForCode } = require("../utils/teamBadge");
 const { removeTeamFromWatchlist } = require("../services/watchlist.service");
@@ -24,7 +22,24 @@ const unwatchTeam = async (teamName) => {
   const deviceId = getDeviceId();
 
   // Remove the team from the watchlist
-  await removeTeamFromWatchlist(deviceId, team.code);
+  const result = await removeTeamFromWatchlist(deviceId, team.code);
+
+  // If nothing was removed, the team wasn't in the watchlist to begin with
+  if (!result.removed) {
+    console.log("");
+    console.log(chalk.bold.yellow("🤔 Not in your Watchlist"));
+    console.log("");
+    console.log(
+      `  ${badgeForCode(team.code)}    ${chalk.white(team.name.toUpperCase())}`,
+    );
+    console.log("");
+    console.log(
+      chalk.dim(`   Add it with: footy watch ${team.name}`),
+    );
+    console.log("");
+
+    return;
+  }
 
   // Print a confirmation styled to match the watchlist view
   console.log("");

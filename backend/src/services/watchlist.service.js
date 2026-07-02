@@ -58,6 +58,7 @@ const removeTeamFromWatchlist = async (deviceId, code) => {
   if (!deletedTeam) {
     return {
       success: true,
+      removed: false,
       message: "Team is not in your watchlist",
     };
   }
@@ -65,6 +66,7 @@ const removeTeamFromWatchlist = async (deviceId, code) => {
   // Return the deleted team with a success message
   return {
     success: true,
+    removed: true,
     message: `${deletedTeam.team} removed from watchlist`,
   };
 };
